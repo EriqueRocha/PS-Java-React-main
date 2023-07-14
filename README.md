@@ -1,49 +1,135 @@
-# Processo Seletivo Java
+#### Autor
+[Erique Rocha](https://github.com/EriqueRocha)
 
-## Descrição 
+## Apresentação:
+Esta aplicação tem como objetivo implementar uma API de gerenciamneto completo de contas e trasaçoes exibindo alimentando um extrato bancário.
 
-- Este teste consiste em construir uma camada de serviço, para uma operação muito realizada em bancos, para emissão de extrato bancário.
+### Tecnologias:
+* Java 1.17+
+* SpringBoot 2.6.4
+* PostgreSQL
+* SpringDataJpa
+* Hibernate
+* SpringWeb
+* SpringTest
+* Projeto Lombok
+* Swagger OpenAPI
+* Global Exception Handlers
+* Flyway
 
+ ### Dependências:
+```XML
+  <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-## Como executar a aplicação 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 
-- Você pode executar a aplicação da maneira que quiser e utilizando a IDE de sua preferência. 
-- Caso queira executar a aplicação via linha de comando, execute primeiramente o comando:
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+    </dependencies>
+```
 
-                   ./mvnw clean package  para linux.
+### SpringDataJpa:
+```XML
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+```
+Implementa uma camada de acesso aos dados de forma facilitada, faça seus métodos personalizados e o Spring fornecerá a implementação
 
-                   .\mvnw clean package  para windows.
-- Após isso execute o comando: 
+### Flyway:
+```XML
+<dependency>
+	<groupId>org.flywaydb</groupId>
+	<artifactId>flyway-core</artifactId>
+</dependency>
+```
+ajuda com a migração de banco de dados, no caso, está sendo utilizado para que a aplicação inicie com um administrador e um usuário cadastrado
 
-                             java -jar <...caminhoParaSeuJar>
+### PostgreSQL:
+```XML
+<dependency>
+	<groupId>org.postgresql</groupId>
+  <artifactId>postgresql</artifactId>
+	<scope>runtime</scope>
+</dependency>
+```
+drive para a utilização do SGBD PostgreSQL
 
-## Requisitos de sistema
+### Lombok:
+```XML
+<dependency>
+	<groupId>org.projectlombok</groupId>
+  <artifactId>lombok</artifactId>
+	<optional>true</optional>
+</dependency>
+```
+biblioteca voltada a produtividade e evitar boilerplate, com o uso de anotações criamos sem a necessidade de digitar de forma extensa, por exemplo, getters, setters e construtores
 
-- Possuir a JDK 11 
-- Uma IDE ou editor de sua preferência
+### Springdoc openapi ui:
+```XML
+<dependency>
+	<groupId>org.springdoc</groupId>
+	<artifactId>springdoc-openapi-ui</artifactId>
+	<version>1.6.4</version>
+</dependency>
+```
+biblioteca que ajuda a automatizar a geração de documentação da API usando projetos de inicialização do spring
 
-## Requisitos do Projeto
+## o Básico para começar a utilizar a aplicação pelo o swagger:
+acessar a documentacão após rodar a API em local host: http://localhost:8080/swagger-ui/index.html
 
-- A sua api deve fornecer os dados de transferência de acordo com o número da conta bacária.
-- Caso não seja informado nenhum filtro, retornar  todos os dados de transferência.
-- Caso seja informado um período de tempo, retornar todas as transferências relacionadas à aquele período de tempo.
-- Caso seja informado o nome do operador da transação, retornar todas as transferências relacionados à aquele operador.
-- Caso todos os filtros sejam informados, retornar todas as transferências com base no período de tempo informado e o nome do operador.
-- Operador de transação nada mais é que, o nome do responsável de destino da transação caso seja uma operação de transferência de saida ou o nome do responsável de onde se originou a transação caso seja uma operação de transferência de entrada.
-- Os valores devem ser de ponto flutuante, e deve-se considerar apenas duas casas decimais.
-- O frontend deve seguir como exemplo o protótipo informado no documento do processo seletivo.
-- No frontend o usuário deve ser capaz de informar um período de tem e/ou nome do operador da transasção como filtros para buscar as transações.
-- As transações devem ser exibidas junto com o saldo total e o saldo total no período de acordo com o protótipo do documento.
+### End points:
+<img src="https://github.com/EriqueRocha/PS-Java-React-main/blob/master/imagem/Captura%20de%20tela%202023-07-14%20151939.png" style="width: 50%;">
 
-## O que iremos avaliar
-- Cumprimento dos requisitos
-- Qualidade do projeto de API e fluidez da DX
-- Organização do código e boas práticas
-- Domínio das linguagens, bibliotecas e ferramentas utilizadas
-- Organização dos commits
-- Escrita e cobertura de testes
+<img src="https://github.com/EriqueRocha/PS-Java-React-main/blob/master/imagem/Captura%20de%20tela%202023-07-14%20152008.png" style="width: 50%;">
 
-## Sobre a entrega
-- Utilizar o padrão RESTFul para a construção da sua API.
-- Existe um script sql no pacote resources que cotém a modelagem do banco que pode ser seguida, e valores iniciais.
-- Caso julge necessário você poderá criar mais tablas, porém a estrutura inicial não deve ser alterada.
+| HTTP                                     | Descrição                                   |
+|------------------------------------------|---------------------------------------------|
+| PUT:/usuarios/{id}                       | Edita uma conta                             |
+| POST:/cadastro                           | Cadastra uma conta                          |
+| GET:/{id}                                | Busca uma conta                             |
+| GET:/list                                |busca a lista de contas                      |
+| DELETE:/deletar/{id}                     | deleta uma conta                            |
+| PUT:/editar/{id}                         | Edita uma transação                         |
+| POST:/cadastar                           | adiciona uma transação                      |
+| GET:/                                    | lista de transação                          |
+| GET:/userId/{id}                         | transações de uma conta                     |
+| GET:/userId/{id}/operador/{operador}     | transações feita a uma pessoa especifica    |
+| GET:/transferencias/{contaId}/{operador} | transações feita a uma pessoa em um período |
+| GET:/transferencias/conta/{contaId}      | busca transação por periodo                 |
+| GET:/escolher/{id}                       | busca uma transação especifica              |
+| DELETE:/delete/{id}                      | deleta uma transação                        |
